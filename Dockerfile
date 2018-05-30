@@ -40,9 +40,7 @@ RUN apt-get update && \
            /var/lib/apt/lists/* \
            /tmp/* \
            /var/tmp/* \
-           /var/cache/man && \
-           (( find /usr/share/doc -depth -type f ! -name copyright|xargs rm || true )) && \
-           (( find /usr/share/doc -empty|xargs rmdir || true ))
+           /var/cache/man
 
 # Entrypoint
 ENTRYPOINT [ "/init" ]
