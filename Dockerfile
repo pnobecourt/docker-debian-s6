@@ -23,14 +23,11 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV SHELL=/bin/bash
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-# Copy and extract s6-overlay
-ADD s6-overlay-amd64.tar.gz /
-
-# Remove unneeded packages / files
+# Install s6-overlay
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends aptitude && \
-    apt-get purge $(aptitude search '~i!~M!~prequired!~pimportant!~R~prequired!~R~R~prequired!~R~pimportant!~R~R~pimportant!busybox!grub!initramfs-tools' | awk '{print $2}') && \
-    apt-get purge aptitude && \
+    apt-get install -y --no-install-recommends curl && \
+    curl -L -s https://github.com/just-containers/s6-overlay/releases/download/v1.21.4.0/s6-overlay-amd64.tar.gz | tar xvzf - -C / && \
+    apt-get purge curl && \
     apt-get autoremove && \
     apt-get clean && \
     rm -rf \
