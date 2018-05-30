@@ -17,6 +17,12 @@ LABEL org.label-schema.name="Debian base image with S6-Overlay" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.schema-version="1.0"
 
+# Define the ENV variable for creating docker image
+ENV LANG C.UTF-8
+ENV DEBIAN_FRONTEND noninteractive
+ENV SHELL=/bin/bash
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
 # Install S6Overlay
 RUN apt-get update && \
     apt-get install -y --no-install-recommends aptitude curl && \
