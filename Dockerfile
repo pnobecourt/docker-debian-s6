@@ -20,7 +20,6 @@ LABEL org.label-schema.name="Debian base image with S6-Overlay" \
 # Define the ENV variable for creating docker image
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
-ENV SHELL=/bin/bash
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Install s6-overlay
@@ -32,19 +31,9 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf \
            /tmp/* \
-           /usr/share/groff \
-           /usr/share/info \
-           /usr/share/linda \
-           /usr/share/lintian \
-           /usr/share/man \
            /var/lib/apt/lists/* \
            /var/log/* \
-           /var/spool/* \
-           /var/tmp/* \
-           /var/lib/apt/lists/* \
-           /tmp/* \
-           /var/tmp/* \
-           /var/cache/man
+           /var/tmp/*
 
 # Entrypoint
 ENTRYPOINT [ "/init" ]
