@@ -27,7 +27,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates curl && \
     curl -L -S https://github.com/just-containers/s6-overlay/releases/download/v1.21.4.0/s6-overlay-amd64.tar.gz | tar xvz -C / && \
     apt-get purge -y curl && \
-    apt-get autoremove && \
+    apt-get autoremove -y && \
     apt-get clean && \
     rm -rf \
            /tmp/* \
