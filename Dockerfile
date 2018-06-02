@@ -5,6 +5,8 @@ FROM debian:latest
 ARG VERSION
 ARG BUILD_DATE
 ARG VCS_REF
+ARG OVERLAY_VERSION=v1.21.4.0
+ARG OVERLAY_ARCH=amd64
 
 # Labels
 LABEL org.label-schema.name="Debian base image with S6-Overlay" \
@@ -18,14 +20,16 @@ LABEL org.label-schema.name="Debian base image with S6-Overlay" \
       org.label-schema.schema-version="1.0"
 
 # Define the ENV variable for creating docker image
-ENV LANG C.UTF-8
-ENV DEBIAN_FRONTEND noninteractive
-ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV LANG=C.UTF-8 \
+DEBIAN_FRONTEND=noninteractive \
+TERM=xterm \
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+PS1=$(whoami)@$(hostname):$(pwd)$
 
 # Install s6-overlay
 RUN apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates curl && \
-    curl -L -S https://github.com/just-containers/s6-overlay/releases/download/v1.21.4.0/s6-overlay-amd64.tar.gz | tar xvz -C / && \
+    curl -L -S https://github.com/just-containers/s6-overlay/releases/download/$OVERLAY_VERSION/s6-overlay-$OVERLAY_ARCH.tar.gz | tar xvz -C / && \
     apt-get purge -y curl && \
     apt-get autoremove -y && \
     apt-get clean && \
