@@ -26,9 +26,9 @@ TERM=xterm \
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
 PS1=$(whoami)@$(hostname):$(pwd)$
 
-# Install s6-overlay
+# Install tools and s6-overlay
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends ca-certificates curl && \
+    apt-get install -y --no-install-recommends bash bash-completion ca-certificates coreutils curl passwd tzdata && \
     curl -L -S https://github.com/just-containers/s6-overlay/releases/download/$OVERLAY_VERSION/s6-overlay-$OVERLAY_ARCH.tar.gz | tar xvz -C / && \
     apt-get purge -y curl && \
     apt-get autoremove -y && \
