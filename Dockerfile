@@ -39,5 +39,8 @@ RUN apt-get update && \
            /var/log/* \
            /var/tmp/*
 
+# Add files
+ADD /root /
+
 # Entrypoint
 ENTRYPOINT [ "/init" ]
