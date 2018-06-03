@@ -4,14 +4,14 @@ PUID=${PUID:-911}
 PGID=${PGID:-911}
 
 # Create docker user and group
-groupadd -g $PGID dockergroup
+groupadd -g $PGID dockeruser
 useradd -o -u $PUID -g $PGID -m -d /srv dockeruser
 
 # Print user / group info
 echo "
 User uid:    $(id -u dockeruser)
-User gid:    $(id -g dockergroup)
+User gid:    $(id -g dockeruser)
 "
 
 # Fix perms
-chown dockeruser:dockergroup /srv
+chown dockeruser:dockeruser /srv
