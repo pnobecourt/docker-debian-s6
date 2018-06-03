@@ -1,5 +1,5 @@
 # Download base image
-FROM debian:latest
+FROM debian:stretch
 
 # Define the ARG variables for creating docker image
 ARG VERSION
@@ -22,6 +22,7 @@ LABEL org.label-schema.name="Debian base image with S6-Overlay" \
 # Define the ENV variable for creating docker image
 ENV LANG=C.UTF-8 \
 DEBIAN_FRONTEND=noninteractive \
+SHELL=/bin/bash \
 TERM=xterm \
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
 PS1=$(whoami)@$(hostname):$(pwd)$
