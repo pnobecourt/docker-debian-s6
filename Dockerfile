@@ -9,8 +9,8 @@ ARG OVERLAY_VERSION=v1.21.4.0
 ARG OVERLAY_ARCH=amd64
 
 # Labels
-LABEL org.label-schema.name="Debian base image with S6-Overlay" \
-      org.label-schema.description="This is a Debian base image with S6-Overlay" \
+LABEL org.label-schema.name="Debian base docker image" \
+      org.label-schema.description="This is a Debian base docker image with s6-overlay" \
       org.label-schema.vendor="Paul NOBECOURT <paul.nobecourt@orange.fr>" \
       org.label-schema.url="https://github.com/pnobecourt/" \
       org.label-schema.version=$VERSION \

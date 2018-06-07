@@ -14,4 +14,4 @@ User gid:    $(id -g dockeruser)
 "
 
 # Fix perms
-chown dockeruser:dockeruser /srv
+chown -R dockeruser:dockeruser /srv
