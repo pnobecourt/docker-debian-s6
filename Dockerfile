@@ -1,7 +1,7 @@
 # Download base image
 FROM debian:stretch
 
-# Define the ARG variables for creating docker image
+# Define the ARG variables
 ARG VERSION
 ARG BUILD_DATE
 ARG VCS_REF
@@ -19,7 +19,7 @@ LABEL org.label-schema.name="Debian base docker image" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.schema-version="1.0"
 
-# Define the ENV variable for creating docker image
+# Define the ENV variables
 ENV LANG=C.UTF-8 \
 DEBIAN_FRONTEND=noninteractive \
 SHELL=/bin/bash \
