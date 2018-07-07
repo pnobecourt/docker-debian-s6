@@ -29,9 +29,25 @@ PS1=$(whoami)@$(hostname):$(pwd)$
 
 # Install tools and s6-overlay
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends bash bash-completion ca-certificates coreutils curl passwd tzdata && \
+    apt-get install -y --no-install-recommends \
+                    apt-transport-https \
+                    bash \
+                    bash-completion \
+                    ca-certificates \
+                    coreutils \
+                    curl \
+                    dirmngr \
+                    gnupg \
+                    less \
+                    logrotate \
+                    nano \
+                    net-tools \
+                    passwd \
+                    procps \
+                    tzdata \
+                    wget \
+                    && \
     curl -L -S https://github.com/just-containers/s6-overlay/releases/download/$OVERLAY_VERSION/s6-overlay-$OVERLAY_ARCH.tar.gz | tar xvz -C / && \
-    apt-get purge -y curl && \
     apt-get autoremove -y && \
     apt-get clean && \
     rm -rf \
