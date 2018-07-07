@@ -44,6 +44,7 @@ RUN apt-get update && \
                     net-tools \
                     passwd \
                     procps \
+                    sudo \
                     tzdata \
                     wget \
                     && \
