@@ -31,6 +31,7 @@ PS1=$(whoami)@$(hostname):$(pwd)$
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
                     apt-transport-https \
+                    apt-utils \
                     bash \
                     bash-completion \
                     ca-certificates \
